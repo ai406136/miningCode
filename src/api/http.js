@@ -5,19 +5,19 @@ import { Toast } from 'mint-ui'
 import qs from 'qs'
 const http = axios.create({
   timeout: 10000,
-  baseURL: 'http://47.91.249.184',
+  baseURL: 'http://120.78.164.148',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   }
 })
 const http2 = axios.create({
   timeout: 10000,
-  baseURL: 'http://47.91.249.184'
+  baseURL: 'http://120.78.164.148'
 })
 
 const token = axios.create({
   timeout: 10000,
-  baseURL: 'http://47.91.249.184',
+  baseURL: 'http://120.78.164.148',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   }

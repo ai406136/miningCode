@@ -55,20 +55,25 @@
   justify-content: space-between;
   flex-grow: 1;
 }
+.details-null {
+  text-align: center;
+  line-height: 1rem;
+}
 </style>
 
 <template>
   <div class="home">
     <Scroll :data='list' class="home-scroll">
-      <ul 
-      class="hom-ul"  
-      @touchstart="touchDom($event, 'add')" 
+      <ul
+      v-if="list.length"
+      class="hom-ul"
+      @touchstart="touchDom($event, 'add')"
       @touchend="touchDom($event, 'rem')">
-        <li 
-          v-for="(item, index) in list" 
-          :key="item.card" 
-          class="home-li" 
-          @touchstart="touchDom(item.card, 'add')" 
+        <li
+          v-for="(item, index) in list"
+          :key="item.card"
+          class="home-li"
+          @touchstart="touchDom(item.card, 'add')"
           @touchend="touchDom(item.card, 'rem')">
           <div class="home-img">
             <img src='../../assets/img/minDetails.jpg' />
@@ -82,6 +87,7 @@
           </div>
         </li>
       </ul>
+      <div class="details-null">未找到信息</div>
     </Scroll>
   </div>
 </template>
