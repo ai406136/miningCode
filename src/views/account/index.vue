@@ -52,7 +52,7 @@
     flex-wrap: wrap;
     padding: .1rem 0;
     p {
-      width: 100%; 
+      width: 100%;
       font-size: .18rem;
       text-align: center;
     }
@@ -119,17 +119,17 @@
     </div>
     <div class="account-img">
       <img src="../../assets/img/toxian.jpg"  v-if="!imgSrc" />
-      <img v-else :src="'http://47.91.249.184/Public/Upload/' + imgSrc" alt="" />
+      <img v-else :src="'http://120.78.164.148/Public/Upload/' + imgSrc" alt="" />
     </div>
     <div class="account-center">
       <ul class="account-center_ul">
         <li>
           <p>我的矿机数量</p>
-           <span>{{listNumber}}</span> 
+           <span>{{listNumber}}</span>
         </li>
         <li>
           <p>矿机总算力</p>
-           <span>{{hashNumber}}</span> 
+           <span>{{hashNumber}}</span>
         </li>
       </ul>
     </div>

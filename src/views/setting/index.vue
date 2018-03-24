@@ -49,7 +49,7 @@
       <span>头像</span>
       <div class="setting-img">
         <img src="../../assets/img/toxian.jpg" v-if="!imgSrc" />
-        <img :src="'http://47.91.249.184/Public/Upload/' + imgSrc" v-else />
+        <img :src="'http://120.78.164.148/Public/Upload/' + imgSrc" v-else />
       </div>
     </div>
     <div class="setting-btn">
