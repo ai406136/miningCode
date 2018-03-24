@@ -120,14 +120,14 @@
             <span>备注</span>
             <mt-button
             @click="addRemark"
-            class="btn" 
-            type="default" 
-            size='small' 
+            class="btn"
+            type="default"
+            size='small'
             v-if="remark === '' || remark === null">添加备注</mt-button>
             <mt-button
             @click="addRemark"
-            class="btn" 
-            type="default" 
+            class="btn"
+            type="default"
             v-else
             size='small'>修改备注</mt-button>
           </h3>
@@ -204,26 +204,26 @@
         <div class="minie-to_box">
           <div class="minie-tu">
             <span>算力统计图</span>
-            <mt-button 
-            class="btn2" 
-            size='small' 
-            type='primary' 
+            <mt-button
+            class="btn2"
+            size='small'
+            type='primary'
             @click="goGraph">查看图表</mt-button>
           </div>
           <div class="minie-tu">
             <span>1号CPU温度统计图</span>
-            <mt-button 
-            class="btn2" 
-            size='small' 
-            type='primary' 
+            <mt-button
+            class="btn2"
+            size='small'
+            type='primary'
             @click="goGraph">查看图表</mt-button>
           </div>
           <div class="minie-tu">
             <span>2号CPU统计图</span>
-            <mt-button 
-            class="btn2" 
-            size='small' 
-            type='primary' 
+            <mt-button
+            class="btn2"
+            size='small'
+            type='primary'
             @click="goGraph">查看图表</mt-button>
           </div>
         </div>
@@ -263,7 +263,7 @@ export default {
         let code = +data.code
         if (code === 200) {
           this.details = data.data
-          this.remark = this.details.remark
+          this.remark = this.details.remark || ''
         }
       })
     },
