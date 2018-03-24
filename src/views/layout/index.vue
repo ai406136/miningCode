@@ -4,7 +4,7 @@
 }
 
 .layout-bar {
-  height: .565rem;
+  height: 0.565rem;
 }
 
 .iconfont {
@@ -27,18 +27,40 @@
 <template>
   <div class="layout">
     <mt-header :title="headerTitle">
-      <div slot="left" v-show="isBack">
-        <mt-button icon="back" @click="back" v-show="!serch">返回</mt-button>
-        <mt-button icon="back" @click="back2" v-show="serch">返回</mt-button>
+      <div slot="left"
+        v-show="isBack === -1">
+        <mt-button icon="back"
+          @click="back"
+          v-show="!serch">返回</mt-button>
+        <mt-button icon="back"
+          @click="back2"
+          v-show="serch">返回</mt-button>
       </div>
-      <mt-button v-show="isShou" @click="search" icon="search" slot="right"></mt-button>
+      <mt-button v-show="isShou"
+        @click="search"
+        icon="search"
+        slot="right"></mt-button>
     </mt-header>
-    <mt-tabbar :fixed='true' v-show="!isBack" v-model="selected" class="layout-bar">
-      <mt-tab-item v-for="(item, index) in data" :key="index" :id='item.router' :ref="item.router" @touchstart.native="touchDom(item.router, 'add')" @touchend.native="touchDom(item.router, 'rem')" @click.native="goClick">
-        <i slot='icon' class="iconfont" :class="item.icon"></i>
+    <mt-tabbar :fixed='true'
+      v-show="isBack !== -1"
+      v-model="selected"
+      class="layout-bar">
+      <mt-tab-item v-for="(item, index) in data"
+        :key="index"
+        :id='item.router'
+        :ref="item.router"
+        @touchstart.native="touchDom(item.router, 'add')"
+        @touchend.native="touchDom(item.router, 'rem')"
+        @click.native="goClick">
+        <i slot='icon'
+          class="iconfont"
+          :class="item.icon"></i>
         <div class="tabSpan">
           {{item.name}}
-          <mt-badge size="small" class="errorC" type="error" v-if="item.isBadge && newsNumber">{{newsNumber}}</mt-badge>
+          <mt-badge size="small"
+            class="errorC"
+            type="error"
+            v-if="item.isBadge && newsNumber">{{newsNumber}}</mt-badge>
         </div>
       </mt-tab-item>
     </mt-tabbar>
@@ -145,12 +167,12 @@ export default {
     },
     isBack () {
       const data = ['首页', '异常消息', '我的']
-      data.forEach(v => {
-        if (this.headerTitle !== v) {
-          return true
-        }
-        return false
-      })
+      // data.forEach(v => {
+      //   if (this.headerTitle !== v) {
+      //     return true
+      //   }
+      // })
+      return data.indexOf(this.headerTitle)
     },
     isShou () {
       return this.headerTitle === '矿机筛选' && !this.serch
