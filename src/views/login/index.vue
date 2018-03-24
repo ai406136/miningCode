@@ -120,17 +120,17 @@
         </li>
         <li>
           <i class="iconfont icon-mima"></i>
-          <input 
-          type="password" 
-          autocomplete='off' 
-          class="from-inp" 
+          <input
+          type="password"
+          autocomplete='off'
+          class="from-inp"
           v-model="from.password" />
         </li>
       </ul>
     </div>
-    <mt-button 
-    class="login-from_submit" 
-    type="default" 
+    <mt-button
+    class="login-from_submit"
+    type="default"
     @click.native="submit">登录</mt-button>
  <!-- <div class="login-bottom">
         <router-link class="login-bottom_link" tag="div" to="/FindKey">
@@ -139,9 +139,9 @@
         </router-link>
        </div> -->
     <div class="login-achieved centers" v-if="achieved">
-      <mt-spinner 
-      :size='50' 
-      color="rgb(255, 255, 255)" 
+      <mt-spinner
+      :size='50'
+      color="rgb(255, 255, 255)"
       type="triple-bounce"></mt-spinner>
     </div>
   </div>
@@ -154,8 +154,8 @@ export default {
     return {
       achieved: false,
       from: {
-        username: '13512345678',
-        password: '123456'
+        username: '',
+        password: ''
       }
     }
   },
