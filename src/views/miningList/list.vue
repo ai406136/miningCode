@@ -1,16 +1,15 @@
 <style lang='less' scoped>
-
 .home-li {
   display: flex;
-  padding: .1rem .15rem;
+  padding: 0.1rem 0.15rem;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
 }
 
 .home-img {
-  width: .75rem;
-  height: .75rem;
-  margin-right: .15rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-right: 0.15rem;
   img {
     width: 100%;
     height: 100%;
@@ -19,13 +18,13 @@
 
 .home-ul_top {
   margin-top: 20px;
-  padding-bottom: 70px
+  padding-bottom: 70px;
 }
 .home-text {
   display: flex;
   width: 77%;
   flex-wrap: wrap;
-  padding: .05rem 0;
+  padding: 0.05rem 0;
   align-content: space-between;
   h3 {
     width: 100%;
@@ -49,31 +48,35 @@
 }
 
 .list-header_btn {
-  height: .25rem;
+  height: 0.25rem;
 }
-
 </style>
 
 <template>
-  <ul class="hom-ul" :class="{'home-ul_top': isSearch === true}">
-    <li 
-    v-for="(item, index) in list" 
-    :key="item.id" 
-    class="home-li" 
-    :ref='item.id' 
-    @touchstart="touchDom(item.id, 'add')" 
-    @touchend="touchDom(item.id, 'rem')">
+  <ul class="hom-ul"
+    :class="{'home-ul_top': isSearch === true}">
+    <li v-for="(item, index) in list"
+      :key="item.id"
+      class="home-li"
+      :ref='item.id'
+      @touchstart="touchDom(item.id, 'add')"
+      @touchend="touchDom(item.id, 'rem')">
       <div class="home-img">
         <img src='../../assets/img/kuan.png' />
       </div>
       <div class="home-text">
         <h3 class="list-title">
           {{item.hostname}}
-          <mt-button 
-          class="list-header_btn" 
-          size='small' 
-          type='primary' 
-          @click="screenList(item.id)">查看详情</mt-button>
+          <div>
+            <mt-button class="list-header_btn"
+              size='small'
+              type='primary'
+              @click="rest(item.id)">重启</mt-button>
+            <mt-button class="list-header_btn"
+              size='small'
+              type='primary'
+              @click="screenList(item.id)">查看详情</mt-button>
+          </div>
         </h3>
         <div class="home-text_bottom">
           <div>
@@ -89,6 +92,7 @@
 
 <script>
 import { addClass, remClass } from '@/utils/index'
+import { mapActions } from 'vuex'
 export default {
   props: {
     list: {
@@ -110,7 +114,21 @@ export default {
     },
     screenList (id) {
       this.$emit('screenList', id)
-    }
+    },
+    rest (id) {
+      this.resetMinig({ id: id }).then(res => {
+        this.$emit('ress')
+        if (res.result === '500') {
+          this.$toast({
+            message: res.msg,
+            position: 'top'
+          })
+        }
+      })
+    },
+    ...mapActions([
+      'resetMinig'
+    ])
   }
 }
 </script>

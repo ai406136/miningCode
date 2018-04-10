@@ -62,5 +62,25 @@ export default {
         })
       }
     )
+  },
+  setWallet ({ commit, state }, data) {
+    return http.post('/home/miner/updproxywallet', qs.stringify(data)).then(res => res).catch(
+      () => {
+        Toast({
+          message: '请求错误',
+          position: 'top'
+        })
+      }
+    )
+  },
+  resetMinig ({ commit, state }, data) {
+    return http.post('/home/miner/restart', qs.stringify(data)).then(res => res).catch(
+      () => {
+        Toast({
+          message: '请求错误',
+          position: 'top'
+        })
+      }
+    )
   }
 }

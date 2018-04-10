@@ -112,18 +112,18 @@
       <mt-tab-item id="2">异常矿机</mt-tab-item>
     </mt-navbar>
     <Scroll :data='list' class="home-scroll" v-show="!serch">
-      <MiningList :list='list' @screenList='screenList'></MiningList>
+      <MiningList :list='list' @screenList='screenList' @ress='ress'></MiningList>
     </Scroll>
     <div class="mining-list_refresh" :class="{'xuan': upajx === true}" @click="upData">
       <i class="iconfont icon-shuaxin"></i>
     </div>
-    <mt-search 
-    placeholder='请输入矿池地址、备注查询矿机' 
-    class="search" 
+    <mt-search
+    placeholder='请输入矿池地址、备注查询矿机'
+    class="search"
     v-model="searchValue"
     v-show="serch">
       <mt-cell>
-        <MiningList :list='searchData' @screenList='screenList' :isSearch='true'></MiningList>
+        <MiningList :list='searchData' @screenList='screenList' :isSearch='true' @ress='ress'></MiningList>
       </mt-cell>
     </mt-search>
   </div>
@@ -163,6 +163,10 @@ export default {
     })
   },
   methods: {
+    ress () {
+      console.log(1)
+      this.getData()
+    },
     getData () {
       this.upajx = true
       let data = this.setSelectData()
