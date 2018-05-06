@@ -100,7 +100,7 @@
           title: '1',
           value: '2'
         }],
-        selected: '',
+        selected: '/home',
         data: [
           {
             name: '首页',
@@ -123,7 +123,9 @@
     },
     created () {
       this.getNunber()
-      this.selected = this.$route.path
+      if (this.$route.path) {
+        this.selected = this.$route.path || '/home'
+      }
     },
     mounted () {
       setInterval(() => {
@@ -204,7 +206,9 @@
     },
     watch: {
       '$route' (to, from) {
-        this.selected = to.path
+        if (to.path) {
+          this.selected = to.path || '/home'
+        }
       }
     }
   }

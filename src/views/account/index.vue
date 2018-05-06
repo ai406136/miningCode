@@ -192,16 +192,16 @@
     </div>
     <ul @touchstart="touchDom($event, 'add')"
         @touchend="touchDom($event, 'rem')">
-      <div tag='li'
-           :to="{path: '/anomaly'}"
-           class="account-sisint">
+      <li tag='li'
+          :to="{path: '/anomaly'}"
+          class="account-sisint">
         <span>
           <i class="iconfont icon-shouji"></i>
           <!-- <i class="iconfont icon-weibiaoti3"></i> -->
         </span>
         <!-- <p class="account-p">{{iphone}}</p> -->
         <p class="account-p">{{iphone}}</p>
-      </div>
+      </li>
       <router-link tag='li'
                    :to="{path: '/FindKey'}"
                    class="account-sisint account-sisint2">
@@ -224,13 +224,13 @@
         </span>
         <p class="account-p account-color2">退出登陆</p>
       </router-link> -->
-      <div class="account-sisint account-sisint3"
-           @click="goBack">
+      <li class="account-sisint account-sisint3"
+          @click="goBack">
         <span class="account-color2">
           <i class="iconfont icon-tuichu"></i>
         </span>
         <p class="account-p account-color2">退出登陆</p>
-      </div>
+      </li>
     </ul>
 
     <mt-actionsheet :actions="actions"
@@ -285,7 +285,8 @@
         this.sheetVisible = true
       },
       upImg () {
-        this.sheetVisible2 = true
+        // this.sheetVisible2 = true
+        document.getElementById('files').click()
       },
       checPic (name) {
         var rgx = '(.jpg|.png|.gif|.jpeg)$'

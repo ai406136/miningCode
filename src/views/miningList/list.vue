@@ -18,7 +18,7 @@
 
   .home-ul_top {
     margin-top: 20px;
-    padding-bottom: 70px;
+    padding-bottom: 55px;
   }
   .home-text {
     display: flex;

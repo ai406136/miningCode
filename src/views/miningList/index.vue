@@ -104,6 +104,9 @@
   }
 </style>
 <style lang='less'>
+  .mint-search {
+    height: 88vh !important;
+  }
   .miningLists {
     .mint-search-list {
       top: 10px;
