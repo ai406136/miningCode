@@ -22,3 +22,15 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+// var tencentPush = api.require('tencentPush')
+
+// var resultCallback = function (ret, err) {
+//   if (ret.status) {
+//     alert('注册成功，token为：' + ret.token)
+//   } else {
+//     alert('注册失败，错误码：' + err.code + '，错误信息：' + err.msg)
+//   }
+// }
+
+// tencentPush.registerPush(resultCallback)

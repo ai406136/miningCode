@@ -1,55 +1,58 @@
 <style lang="less" scoped>
-.setting-zhan {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.05rem 0.15rem;
-  background-color: #fff;
-  margin-bottom: 0.1rem;
-  span {
-    margin-top: 0.1rem;
-    font-size: 0.18rem;
+  .setting-zhan {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.05rem 0.15rem;
+    background-color: #fff;
+    margin-bottom: 0.1rem;
+    span {
+      margin-top: 0.1rem;
+      font-size: 0.18rem;
+    }
   }
-}
 
-.setting-img {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
+  .setting-img {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
-}
 
-.setting-btn {
-  padding: 0.085rem 0.15rem;
-  background-color: #fff;
-  border-bottom: 1px solid #EFEFEF;
-  vertical-align: middle;
-  i {
-    font-size: 0.25rem;
+  .setting-btn {
+    padding: 0.085rem 0.15rem;
+    background-color: #fff;
+    border-bottom: 1px solid #efefef;
     vertical-align: middle;
+    i {
+      font-size: 0.25rem;
+      vertical-align: middle;
+    }
+    p {
+      float: right;
+      height: 100%;
+      line-height: 0.25rem;
+    }
   }
-  p {
-    float: right;
-    height: 100%;
-    line-height: 0.25rem;
-  }
-}
 
-.imgFile {
-  background-color: transparent;
-}
+  .imgFile {
+    background-color: transparent;
+  }
 </style>
 
 <template>
   <div>
-    <div class="setting-zhan" @click="upImg">
+    <div class="setting-zhan"
+         @click="upImg">
       <span>头像</span>
       <div class="setting-img">
-        <img src="../../assets/img/toxian.jpg" v-if="!imgSrc" />
-        <img :src="'http://120.78.164.148/Public/Upload/' + imgSrc" v-else />
+        <img src="../../assets/img/toxian.jpg"
+             v-if="!imgSrc" />
+        <img :src="'http://120.78.164.148/Public/Upload/' + imgSrc"
+             v-else />
       </div>
     </div>
     <div class="setting-btn">
@@ -57,104 +60,115 @@
       手机号
       <p>{{iphone}}</p>
     </div>
-    <router-link tag='div' :to="{path: '/FindKey'}" class="setting-btn">
+    <router-link tag='div'
+                 :to="{path: '/FindKey'}"
+                 class="setting-btn">
       <i class="iconfont icon-icon56-copy"></i>
       修改密码
     </router-link>
-    <div class="setting-btn" @click="goBack">
+    <div class="setting-btn"
+         @click="goBack">
       <i class="iconfont icon-tuichu"></i>
       退出登录
     </div>
-    <mt-actionsheet :actions="actions" v-model="sheetVisible">
+    <mt-actionsheet :actions="actions"
+                    v-model="sheetVisible">
     </mt-actionsheet>
-    <mt-actionsheet :actions="actions2" v-model="sheetVisible2">
+    <mt-actionsheet :actions="actions2"
+                    v-model="sheetVisible2">
     </mt-actionsheet>
-    <input ref="files" id="files" type='file' class="imgFile" @change="upImgFile" accept="image/*" style="display:none;">
+    <input ref="files"
+           id="files"
+           type='file'
+           class="imgFile"
+           @change="upImgFile"
+           accept="image/*"
+           style="display:none;">
   </div>
 </template>
 
 <script>
-import { logout } from '@/utils/index'
-import { mapGetters } from 'vuex'
-export default {
-  data () {
-    return {
-      sheetVisible: false,
-      sheetVisible2: false,
-      imgSrc: '',
-      def: '../../assets/img/toxian.jpg',
-      actions: [{
-        name: '确定',
-        method () {
-          logout()
-        }
-      }],
-      actions2: [{
-        name: '更换头像',
-        method () {
-          document.getElementById('files').click()
-        }
-      }]
-    }
-  },
-  created () {
-    this.imgSrc = localStorage.getItem('imgSrc')
-  },
-  methods: {
-    goBack () {
-      this.sheetVisible = true
-    },
-    upImg () {
-      this.sheetVisible2 = true
-    },
-    checPic (name) {
-      var rgx = '(.jpg|.png|.gif|.jpeg)$'
-      var re = new RegExp(rgx)
-      if (re.test(name.toLowerCase())) {
-        return true
-      } else {
-        return false
+  import { logout } from '@/utils/index'
+  import { mapGetters } from 'vuex'
+  export default {
+    data () {
+      return {
+        sheetVisible: false,
+        sheetVisible2: false,
+        imgSrc: '',
+        def: '../../assets/img/toxian.jpg',
+        actions: [{
+          name: '确定',
+          method () {
+            logout()
+          }
+        }],
+        actions2: [{
+          name: '更换头像',
+          method () {
+            document.getElementById('files').click()
+          }
+        }]
       }
     },
-    upImgFile (e) {
-      if (e.target.files && e.target.files.length) {
-        const file = e.target.files[0]
-        let isImg = this.checPic(e.target.files[0].name)
-        if (!isImg) {
-          console.log(e.target.files[0].name)
-          this.$toast({
-            title: '暂只支持jpg、png、gif、jpeg后缀图片',
-            message: '暂只支持jpg、png、gif、jpeg后缀图片',
-            position: 'top',
-            iconClass: ''
+    created () {
+      this.imgSrc = localStorage.getItem('imgSrc')
+    },
+    methods: {
+      goBack () {
+        this.sheetVisible = true
+      },
+      upImg () {
+        this.sheetVisible2 = true
+      },
+      checPic (name) {
+        var rgx = '(.jpg|.png|.gif|.jpeg)$'
+        var re = new RegExp(rgx)
+        if (re.test(name.toLowerCase())) {
+          return true
+        } else {
+          return false
+        }
+      },
+      upImgFile (e) {
+        if (e.target.files && e.target.files.length) {
+          const file = e.target.files[0]
+          let isImg = this.checPic(e.target.files[0].name)
+          if (!isImg) {
+            console.log(e.target.files[0].name)
+            this.$toast({
+              title: '暂只支持jpg、png、gif、jpeg后缀图片',
+              message: '暂只支持jpg、png、gif、jpeg后缀图片',
+              position: 'center',
+              iconClass: ''
+            })
+            return
+          }
+          let formData = new FormData()
+          formData.append('file', file)
+          formData.append('token', localStorage.getItem('token'))
+          let config = {
+            url: 'home/user/imguplod',
+            method: 'post',
+            data: formData,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+          this.$http2(config).then(res => {
+            console.log(res)
+            if (res.code === 200 || '200') {
+              this.imgSrc = res.data.img
+              localStorage.setItem('imgSrc', res.data.img)
+            }
           })
-          return
         }
-        let formData = new FormData()
-        formData.append('file', file)
-        formData.append('token', localStorage.getItem('token'))
-        let config = {
-          url: 'home/user/imguplod',
-          method: 'post',
-          data: formData,
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }
-        this.$http2(config).then(res => {
-          console.log(res)
-          if (res.code === 200 || '200') {
-            this.imgSrc = res.data.img
-            localStorage.setItem('imgSrc', res.data.img)
-          }
-        })
       }
+    },
+    computed: {
+      ...mapGetters([
+        'iphone'
+      ])
     }
-  },
-  computed: {
-    ...mapGetters([
-      'iphone'
-    ])
   }
-}
 </script>

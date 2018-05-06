@@ -1,42 +1,78 @@
-export const hashrate = (data) => {
-  let option = {
-
-    // Make gradient line here
-    visualMap: [{
-      show: false,
-      type: 'continuous',
-      seriesIndex: 0,
-      min: 0
-    }],
-    // title: [{
-    //   left: 'center',
-    //   text: '算力统计'
-    // }],
-    tooltip: {
-      trigger: 'axis'
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [{
-      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-    }],
-    yAxis: [{
-      splitLine: { show: false }
-    }],
-    series: [{
-      type: 'line',
-      showSymbol: false,
-      data: [1, 20, 50, 30, 45, 35, 60]
-    }]
+// import api from './api'
+// console.log(api)
+export const hashrate = (data = {}) => {
+  let num = 0
+  let nameArr = []
+  let dataArr = []
+  // let data = {
+  //   "hash": {
+  //     "1": {
+  //       "2018-04-25 18:47:24": "66.70",
+  //       "2018-04-25 19:47:24": "63.70",
+  //       "2018-04-25 20:47:24": "63.47",
+  //       "2018-04-25 21:47:24": "63.30",
+  //       "2018-04-25 22:47:24": "63.30",
+  //       "2018-04-25 23:47:24": "66.00",
+  //       "2018-04-25 17:47:24": "64.20"
+  //     },
+  //     "2": {
+  //       "2018-04-25 18:47:24": "73.13",
+  //       "2018-04-25 19:47:24": "73.13",
+  //       "2018-04-25 20:47:24": "73.37",
+  //       "2018-04-25 21:47:24": "73.10",
+  //       "2018-04-25 22:47:24": "73.10",
+  //       "2018-04-25 23:47:24": "75.00",
+  //       "2018-04-25 17:47:24": "20.00"
+  //     }
+  //   }
+  // }
+  if (!data) {
+    data = {}
   }
-  return option
-}
-
-export const CpuTemperature = (data) => {
+  for (let i in data) {
+    num++
+    let dataArrData = []
+    nameArr.push(`gpu${num}`)
+    for (let j in data[i].hash) {
+      dataArrData.push(data[i].hash[j])
+    }
+    dataArr.push({
+      name: `gpu${num}`,
+      type: 'line',
+      data: dataArrData
+    })
+  }
+  // if (data.hash && data.hash['1'] && data.hash['1'].constructor.name === 'Object') {
+  //   Object.keys(data.hash).forEach((v, i) => {
+  //     num++
+  //     let dataArrData = []
+  //     for (let j in data.hash[v]) {
+  //       dataArrData.push(data.hash[v][j])
+  //     }
+  //     nameArr.push(`gpu${num}`)
+  //     dataArr.push(
+  //       {
+  //         name: `gpu${num}`,
+  //         type: 'line',
+  //         data: dataArrData
+  //       }
+  //     )
+  //   })
+  // } else {
+  //   nameArr.push('gpu1')
+  //   let dataArrData = []
+  //   for (let i in data.hash) {
+  //     dataArrData.push(data.hash[i])
+  //   }
+  //   dataArr.push(
+  //     {
+  //       name: `gpu${num}`,
+  //       type: 'line',
+  //       data: dataArrData
+  //     }
+  //   )
+  // }
+  // console.log(nameArr, dataArr)
   let option = {
     tooltip: {
       trigger: 'axis'
@@ -44,7 +80,281 @@ export const CpuTemperature = (data) => {
     legend: {
       left: 'center',
       top: '0%',
-      data: ['1号GPU', '2号GPU', '3号GPU', '4号GPU', '5号GPU', '6号GPU', '7号GPU', '8号GPU']
+      data: nameArr
+    },
+    xAxis: {
+      type: 'category',
+      splitLine: { show: false },
+      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      top: '20%',
+      containLabel: true
+    },
+    yAxis: {
+      type: 'value',
+      name: '算力'
+    },
+    series: dataArr
+  }
+  return option
+}
+
+export const hashrateTime = (data = {}) => {
+  let num = 0
+  let nameArr = []
+  let axisArr = []
+  let dataArr = []
+  if (!data) {
+    data = {}
+  }
+  for (let i in data) {
+    num++
+    let dataArrData = []
+    nameArr.push(`gpu${num}`)
+    for (let j in data[i].hash) {
+      let e = j.split(' ')
+      axisArr.push(e[1])
+      dataArrData.push(data[i].hash[j])
+    }
+    dataArr.push({
+      name: `gpu${num}`,
+      type: 'line',
+      data: dataArrData
+    })
+  }
+  // if (data.hash && data.hash['1'] && data.hash['1'].constructor.name === 'Object') {
+  //   Object.keys(data.hash).forEach((v, i) => {
+  //     num++
+  //     let dataArrData = []
+  //     for (let j in data.hash[v]) {
+  //       dataArrData.push(data.hash[v][j])
+  //     }
+  //     nameArr.push(`gpu${num}`)
+  //     dataArr.push(
+  //       {
+  //         name: `gpu${num}`,
+  //         type: 'line',
+  //         data: dataArrData
+  //       }
+  //     )
+  //   })
+  // } else {
+  //   nameArr.push('gpu1')
+  //   let dataArrData = []
+  //   for (let i in data.hash) {
+  //     dataArrData.push(data.hash[i])
+  //   }
+  //   dataArr.push(
+  //     {
+  //       name: `gpu${num}`,
+  //       type: 'line',
+  //       data: dataArrData
+  //     }
+  //   )
+  // }
+  axisArr = new Set(axisArr)
+  let option = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      left: 'center',
+      top: '0%',
+      data: nameArr
+    },
+    xAxis: {
+      type: 'category',
+      splitLine: { show: false },
+      data: Array.from(axisArr)
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      top: '20%',
+      containLabel: true
+    },
+    yAxis: {
+      type: 'value',
+      name: '当日算力'
+    },
+    series: dataArr
+  }
+  return option
+}
+
+export const CpuTemperatureTime = (data = {}) => {
+  let num = 0
+  let nameArr = []
+  let axisArr = []
+  let dataArr = []
+  // let data = {
+  //   "temp": {
+  //     "1": {
+  //       "2018-04-25 18:47:24": "66.70",
+  //       "2018-04-25 19:47:24": "63.70",
+  //       "2018-04-25 20:47:24": "63.47",
+  //       "2018-04-25 21:47:24": "63.30",
+  //       "2018-04-25 22:47:24": "63.30",
+  //       "2018-04-25 23:47:24": "66.00",
+  //       "2018-04-25 17:47:24": "64.20"
+  //     },
+  //     "2": {
+  //       "2018-04-25 18:47:24": "73.13",
+  //       "2018-04-25 19:47:24": "73.13",
+  //       "2018-04-25 20:47:24": "73.37",
+  //       "2018-04-25 21:47:24": "73.10",
+  //       "2018-04-25 22:47:24": "73.10",
+  //       "2018-04-25 23:47:24": "75.00",
+  //       "2018-04-25 17:47:24": "20.00"
+  //     }
+  //   }
+  // }
+  if (!data) {
+    data = {}
+  }
+  for (let i in data) {
+    num++
+    let dataArrData = []
+    nameArr.push(`gpu${num}`)
+    for (let j in data[i].temp) {
+      let e = j.split(' ')
+      axisArr.push(e[1])
+      dataArrData.push(data[i].temp[j])
+    }
+    dataArr.push({
+      name: `gpu${num}`,
+      type: 'line',
+      data: dataArrData
+    })
+  }
+  // if (data.temp && data.temp['1'] && data.temp['1'].constructor.name === 'Object') {
+  //   Object.keys(data.temp).forEach((v, i) => {
+  //     num++
+  //     let dataArrData = []
+  //     for (let j in data.temp[v]) {
+  //       dataArrData.push(data.temp[v][j])
+  //       let e = j.split(' ')
+  //       axisArr.push(e[1])
+  //     }
+  //     nameArr.push(`gpu${num}`)
+  //     dataArr.push(
+  //       {
+  //         name: `gpu${num}`,
+  //         type: 'line',
+  //         data: dataArrData
+  //       }
+  //     )
+  //   })
+  // } else {
+  //   nameArr.push('gpu1')
+  //   let dataArrData = []
+  //   for (let i in data.temp) {
+  //     dataArrData.push(data.temp[i])
+  //     let e = i.split(' ')
+  //     axisArr.push(e[1])
+  //   }
+  //   dataArr.push(
+  //     {
+  //       name: `gpu${num}`,
+  //       type: 'line',
+  //       data: dataArrData
+  //     }
+  //   )
+  // }
+  axisArr = new Set(axisArr)
+  let option = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      left: 'center',
+      top: '0%',
+      data: nameArr
+    },
+    xAxis: {
+      type: 'category',
+      splitLine: { show: false },
+      data: Array.from(axisArr)
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      top: '20%',
+      containLabel: true
+    },
+    yAxis: {
+      type: 'value',
+      name: '当日温度'
+    },
+    series: dataArr
+  }
+  return option
+}
+
+export const CpuTemperature = (data) => {
+  let num = 0
+  let nameArr = []
+  let dataArr = []
+  if (!data) {
+    data = {}
+  }
+  for (let i in data) {
+    num++
+    let dataArrData = []
+    nameArr.push(`gpu${num}`)
+    for (let j in data[i].temp) {
+      dataArrData.push(data[i].temp[j])
+    }
+    dataArr.push({
+      name: `gpu${num}`,
+      type: 'line',
+      data: dataArrData
+    })
+  }
+  // if (data.temp && data.temp['1'] && data.temp['1'].constructor.name === 'Object') {
+  //   Object.keys(data.temp).forEach((v, i) => {
+  //     num++
+  //     let dataArrData = []
+  //     for (let j in data.temp[v]) {
+  //       dataArrData.push(data.temp[v][j])
+  //     }
+  //     nameArr.push(`gpu${num}`)
+  //     dataArr.push(
+  //       {
+  //         name: `gpu${num}`,
+  //         type: 'line',
+  //         data: dataArrData
+  //       }
+  //     )
+  //   })
+  // } else {
+  //   nameArr.push('gpu1')
+  //   let dataArrData = []
+  //   for (let i in data.temp) {
+  //     dataArrData.push(data.temp[i])
+  //   }
+  //   dataArr.push(
+  //     {
+  //       name: `gpu${num}`,
+  //       type: 'line',
+  //       data: dataArrData
+  //     }
+  //   )
+  // }
+  let option = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      left: 'center',
+      top: '0%',
+      data: nameArr
     },
     xAxis: {
       type: 'category',
@@ -62,48 +372,7 @@ export const CpuTemperature = (data) => {
       type: 'value',
       name: '温度'
     },
-    series: [
-      {
-        name: '1号GPU',
-        type: 'line',
-        data: [10, 32, 92, 27, 22, 36, 20]
-      },
-      {
-        name: '2号GPU',
-        type: 'line',
-        data: [10, 56, 43, 8, 126, 32, 23]
-      },
-      {
-        name: '3号GPU',
-        type: 'line',
-        data: [1, 12, 83, 18, 56, 32, 200]
-      },
-      {
-        name: '4号GPU',
-        type: 'line',
-        data: [20, 15, 35, 18, 76, 39, 23]
-      },
-      {
-        name: '5号GPU',
-        type: 'line',
-        data: [50, 55, 63, 138, 56, 29, 13]
-      },
-      {
-        name: '6号GPU',
-        type: 'line',
-        data: [20, 35, 13, 158, 26, 19, 3]
-      },
-      {
-        name: '7号GPU',
-        type: 'line',
-        data: [120, 15, 53, 68, 22, 19, 23]
-      },
-      {
-        name: '8号GPU',
-        type: 'line',
-        data: [10, 25, 33, 38, 52, 129, 150]
-      }
-    ]
+    series: dataArr
   }
   return option
 }
@@ -160,3 +429,16 @@ export const getDate = () => {
   var str = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
   return str
 }
+
+// export const pushTencent = (name, api) => {
+//   // 注册设备并绑定用户账号
+//   var tencentPush = api.require('tencentPush')
+
+//   var resultCallback = function (ret, err) {
+//     console.log('注册成功')
+//   }
+
+//   // 需要绑定的账号，若为'*'表示解除之前的账号绑定
+//   var params = { account: name }
+//   tencentPush.registerPush(params, resultCallback)
+// }

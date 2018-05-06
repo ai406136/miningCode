@@ -25,12 +25,12 @@ const token = axios.create({
 
 export const reqResolve2 = config => {
   // if (config.method === 'post') {
-    // const token = localStorage.getItem('token')
-    // let data = config.data
-    // config.data = qs.stringify({
-    //   token: token,
-    //   ...data
-    // })
+  // const token = localStorage.getItem('token')
+  // let data = config.data
+  // config.data = qs.stringify({
+  //   token: token,
+  //   ...data
+  // })
   // }
   return config
 }
@@ -60,7 +60,7 @@ export const resResolve = response => {
   if (code === 500) {
     Toast({
       message: response.data.message,
-      position: 'top'
+      position: 'center'
     })
     if (response.data.message === '请先登录' || response.data.message.indexOf('失效') !== -1) {
       setTimeout(() => {

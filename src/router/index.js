@@ -9,6 +9,7 @@ const AnomalyDetals = () => import(/* webpackChunkName: "detals" */ '@/views/ano
 const noDef = () => import(/* webpackChunkName: "detals" */ '@/views/404')
 const MineDetails = () => import(/* webpackChunkName: "detals" */ '@/views/mineDetails')
 const Graph = () => import(/* webpackChunkName: "detals" */ '@/views/graph')
+const Graph2 = () => import(/* webpackChunkName: "detals" */ '@/views/graph2')
 const Setting = () => import(/* webpackChunkName: "detals" */ '@/views/setting')
 const MiningList = () => import(/* webpackChunkName: "detals" */ '@/views/miningList')
 const Article = () => import(/* webpackChunkName: "login" */ '@/views/article')
@@ -28,6 +29,7 @@ export default new Router({
         { path: '/anomalyDetals', name: 'anomalyDetals', component: AnomalyDetals },
         { path: '/mineDetails', name: 'mineDetails', component: MineDetails },
         { path: '/graph', name: 'graph', component: Graph },
+        { path: '/graph2', name: 'graph', component: Graph2 },
         { path: '/setting', name: 'setting', component: Setting },
         { path: '/miningList', name: 'miningList', component: MiningList },
         { path: '/FindKey', name: 'FindKey', component: FindKey },

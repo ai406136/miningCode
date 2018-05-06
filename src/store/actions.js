@@ -82,5 +82,25 @@ export default {
         })
       }
     )
+  },
+  getTempData ({ commit, state }, data) {
+    return http.post('/home/Miner/getTemp', qs.stringify(data)).then(res => res).catch(
+      () => {
+        Toast({
+          message: '请求错误',
+          position: 'top'
+        })
+      }
+    )
+  },
+  getDateTimeTempData ({ commit, state }, data) {
+    return http.post('/home/miner/getdaytemp', qs.stringify(data)).then(res => res).catch(
+      () => {
+        Toast({
+          message: '请求错误',
+          position: 'top'
+        })
+      }
+    )
   }
 }

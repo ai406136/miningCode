@@ -2,7 +2,7 @@
 * {
     margin: 0;
     padding: 0;
-    user-select: auto;
+    user-select: text;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -16,7 +16,23 @@ body::-webkit-scrollbar {
 body {
     -ms-overflow-style: none;
 }
-input:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px #1C85C8 inset;-webkit-user-select:auto!important;}
+input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  text-indent: .06rem;
+}
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  text-indent: .06rem;
+}
+input:-ms-input-placeholder {
+  /* Internet Explorer 10 */
+  text-indent: .06rem;
+}
+input::placeholder {
+  text-indent: .06rem;
+}
+
+input:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px #1C85C8 inset;-webkit-user-select:text!important;}
 html,
 body {
     margin: 0;
@@ -108,4 +124,7 @@ a:active {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.mint-toast.is-placemiddle {
+  z-index: 4000 !important;
 }

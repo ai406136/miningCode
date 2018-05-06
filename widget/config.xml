@@ -38,11 +38,17 @@
 
 	<preference name="smartUpdate" value="false" />
 
-	<preference name="debug" value="true"/>
+	<preference name="debug" value="false"/>
 
 	<preference name="statusBarAppearance" value="true"/>
 
 	<permission name="readPhoneState" />
+
+  <preference name="statusBarAppearance" value="true" />
+
+  <preference name="iOS7StatusBarAppearance" value="true" />
+
+  <preference name="softInputMode" value="pan"/>
 
 	<permission name="camera" />
 
@@ -57,6 +63,9 @@
 	<permission name="bootCompleted" />
 
 	<permission name="hardware" />
-
+  <feature name="tencentPush">
+      <param name="android_accessId" value="2100281914" />
+      <param name="android_accessKey" value="AKPK8BP5818M" />
+  </feature>
 </widget>
 

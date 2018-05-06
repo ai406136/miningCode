@@ -1,66 +1,85 @@
 <style lang='less' scoped>
-.layout {
-  // padding-top: 40px;
-}
+  .layout {
+    // padding-top: 40px;
+  }
 
-.layout-bar {
-  height: 0.565rem;
-}
+  .layout-bar {
+    height: 0.565rem;
+  }
 
-.iconfont {
-  font-size: 0.2rem;
-}
+  .iconfont {
+    font-size: 0.2rem;
+  }
 
-.tabSpan {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  position: relative;
-}
+  .tabSpan {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    position: relative;
+  }
 
-.errorC {
-  position: absolute;
-  top: -35px;
-  right: -2px;
-}
+  .errorC {
+    position: absolute;
+    top: -35px;
+    right: -2px;
+  }
 </style>
+<style>
+  .mint-header {
+    height: 63px !important;
+    padding-top: 25px !important;
+    font-size: 18px !important;
+    background: linear-gradient(left, #0fa2f9, #59d7f5) !important;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(#0fa2f9),
+      to(#59d7f5)
+    ) !important;
+  }
+  .mint-tabbar > .mint-tab-item.is-selected {
+    background: transparent !important;
+  }
+</style>
+
 <template>
   <div class="layout">
     <mt-header :title="headerTitle">
       <div slot="left"
-        v-show="isBack === -1">
+           v-show="isBack === -1">
         <mt-button icon="back"
-          @click="back"
-          v-show="!serch">返回</mt-button>
+                   @click="back"
+                   v-show="!serch">返回</mt-button>
         <mt-button icon="back"
-          @click="back2"
-          v-show="serch">返回</mt-button>
+                   @click="back2"
+                   v-show="serch">返回</mt-button>
       </div>
       <mt-button v-show="isShou"
-        @click="search"
-        icon="search"
-        slot="right"></mt-button>
+                 @click="search"
+                 icon="search"
+                 slot="right"></mt-button>
     </mt-header>
     <mt-tabbar :fixed='true'
-      v-show="isBack !== -1"
-      v-model="selected"
-      class="layout-bar">
+               v-show="isBack !== -1"
+               v-model="selected"
+               class="layout-bar">
       <mt-tab-item v-for="(item, index) in data"
-        :key="index"
-        :id='item.router'
-        :ref="item.router"
-        @touchstart.native="touchDom(item.router, 'add')"
-        @touchend.native="touchDom(item.router, 'rem')"
-        @click.native="goClick">
+                   :key="index"
+                   :id='item.router'
+                   :ref="item.router"
+                   @touchstart.native="touchDom(item.router, 'add')"
+                   @touchend.native="touchDom(item.router, 'rem')"
+                   @click.native="goClick">
         <i slot='icon'
-          class="iconfont"
-          :class="item.icon"></i>
+           class="iconfont"
+           :class="item.icon"></i>
         <div class="tabSpan">
           {{item.name}}
           <mt-badge size="small"
-            class="errorC"
-            type="error"
-            v-if="item.isBadge && newsNumber">{{newsNumber}}</mt-badge>
+                    class="errorC"
+                    type="error"
+                    v-if="item.isBadge && newsNumber">{{newsNumber}}</mt-badge>
         </div>
       </mt-tab-item>
     </mt-tabbar>
@@ -69,123 +88,124 @@
 </template>
 
 <script>
-import resource from '@/utils/resource.json'
-import { addClass, remClass } from '@/utils/index'
-import { mapGetters, mapMutations, mapActions } from 'vuex'
-export default {
-  name: 'layout',
-  data () {
-    return {
-      searchData: '',
-      result: [{
-        title: '1',
-        value: '2'
-      }],
-      selected: '',
-      data: [
-        {
-          name: '首页',
-          icon: 'icon-shouye',
-          router: '/home'
-        },
-        {
-          name: '异常消息',
-          icon: 'icon-xiaoxi',
-          router: '/anomaly',
-          isBadge: true
-        },
-        {
-          name: '我的',
-          icon: 'icon-home',
-          router: '/account'
-        }
-      ]
-    }
-  },
-  created () {
-    this.getNunber()
-    this.selected = this.$route.path
-  },
-  mounted () {
-    setInterval(() => {
-      this.getNunber()
-    }, 70000)
-  },
-  methods: {
-    getNunber () {
-      let num = 0
-      this.getList().then(res => {
-        if (res.code === '200') {
-          let hasNumber = 0
-          res.data.forEach((v) => {
-            hasNumber += +v.hash
-            if (+v.cpu_temp > 80 || +v.hash < 18) {
-              num++
-            }
-          })
-          this.SET_LISTNUMBER(res.data.length)
-          this.SET_HASHNUMBER(hasNumber)
-          this.SET_NEWSNUMBER(num)
-        }
-      })
-    },
-    goClick () {
-      this.$router.push({
-        path: this.selected
-      })
-    },
-    back () {
-      this.SET_SERCH(false)
-      this.$router.back()
-    },
-    back2 () {
-      this.SET_SERCH(false)
-    },
-    search () {
-      this.SET_SERCH(true)
-    },
-    touchDom (dom, name) {
-      if (name === 'add') {
-        addClass(this.$refs[dom][0].$el, 'home-li_click')
-      } else {
-        remClass(this.$refs[dom][0].$el, 'home-li_click')
+  import resource from '@/utils/resource.json'
+  import { addClass, remClass } from '@/utils/index'
+  import { mapGetters, mapMutations, mapActions } from 'vuex'
+  export default {
+    name: 'layout',
+    data () {
+      return {
+        searchData: '',
+        result: [{
+          title: '1',
+          value: '2'
+        }],
+        selected: '',
+        data: [
+          {
+            name: '首页',
+            icon: 'icon-shouye',
+            router: '/home'
+          },
+          {
+            name: '异常消息',
+            icon: 'icon-xiaoxi',
+            router: '/anomaly',
+            isBadge: true
+          },
+          {
+            name: '我的',
+            icon: 'icon-home',
+            router: '/account'
+          }
+        ]
       }
     },
-    ...mapActions([
-      'getList'
-    ]),
-    ...mapMutations([
-      'SET_SERCH',
-      'SET_NEWSNUMBER',
-      'SET_LISTNUMBER',
-      'SET_HASHNUMBER'
-    ])
-  },
-  computed: {
-    headerTitle () {
-      return resource.header[this.$route.name]
+    created () {
+      this.getNunber()
+      this.selected = this.$route.path
     },
-    isBack () {
-      const data = ['首页', '异常消息', '我的']
-      // data.forEach(v => {
-      //   if (this.headerTitle !== v) {
-      //     return true
-      //   }
-      // })
-      return data.indexOf(this.headerTitle)
+    mounted () {
+      setInterval(() => {
+        this.getNunber()
+      }, 70000)
     },
-    isShou () {
-      return this.headerTitle === '矿机筛选' && !this.serch
+    methods: {
+      getNunber () {
+        let num = 0
+        this.getList().then(res => {
+          if (res.code === '200') {
+            let hasNumber = 0
+            res.data.forEach((v) => {
+              hasNumber += +v.hash
+              if (+v.cpu_temp > 80 || +v.hash < 18) {
+                num++
+              }
+            })
+            const hasNumberCope = hasNumber.toFixed(2)
+            this.SET_LISTNUMBER(res.data.length)
+            this.SET_HASHNUMBER(hasNumberCope)
+            this.SET_NEWSNUMBER(num)
+          }
+        })
+      },
+      goClick () {
+        this.$router.push({
+          path: this.selected
+        })
+      },
+      back () {
+        this.SET_SERCH(false)
+        this.$router.back()
+      },
+      back2 () {
+        this.SET_SERCH(false)
+      },
+      search () {
+        this.SET_SERCH(true)
+      },
+      touchDom (dom, name) {
+        if (name === 'add') {
+          addClass(this.$refs[dom][0].$el, 'home-li_click')
+        } else {
+          remClass(this.$refs[dom][0].$el, 'home-li_click')
+        }
+      },
+      ...mapActions([
+        'getList'
+      ]),
+      ...mapMutations([
+        'SET_SERCH',
+        'SET_NEWSNUMBER',
+        'SET_LISTNUMBER',
+        'SET_HASHNUMBER'
+      ])
     },
-    ...mapGetters([
-      'newsNumber',
-      'serch'
-    ])
-  },
-  watch: {
-    '$route' (to, from) {
-      this.selected = to.path
+    computed: {
+      headerTitle () {
+        return resource.header[this.$route.name]
+      },
+      isBack () {
+        const data = ['首页', '异常消息', '我的']
+        // data.forEach(v => {
+        //   if (this.headerTitle !== v) {
+        //     return true
+        //   }
+        // })
+        return data.indexOf(this.headerTitle)
+      },
+      isShou () {
+        return this.headerTitle === '矿机筛选' && !this.serch
+      },
+      ...mapGetters([
+        'newsNumber',
+        'serch'
+      ])
+    },
+    watch: {
+      '$route' (to, from) {
+        this.selected = to.path
+      }
     }
   }
-}
 </script>
