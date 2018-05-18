@@ -122,9 +122,12 @@
       }
     },
     created () {
+      console.log(11)
       this.getNunber()
       if (this.$route.path) {
-        this.selected = this.$route.path || '/home'
+        this.selected = '/home'
+      } else {
+        this.selected = '/home'
       }
     },
     mounted () {

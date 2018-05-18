@@ -121,7 +121,7 @@
       },
       getData () {
         this.getList({ type: 2 }).then(res => {
-          if (res.code === '200') {
+          if (res && res.code === '200') {
             this.SET_NEWSNUMBER('')
             this.list = res.data
             // res.data.forEach((v) => {

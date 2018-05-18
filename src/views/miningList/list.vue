@@ -146,7 +146,7 @@
               if (res.result === '500') {
                 this.$toast({
                   message: res.msg,
-                  position: 'top'
+                  position: 'center'
                 })
               }
             })

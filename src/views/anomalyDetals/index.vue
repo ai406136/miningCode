@@ -113,11 +113,11 @@
           id: this.$route.query.id
         }
         this.getDetail(data).then(res => {
-          if (res.code === 200) {
+          if (res && res.code === 200) {
             if (+res.data.cpu_temp > 80) {
               this.list.push('cpu温度异常')
             }
-            if (+res.data.hash < 18) {
+            if (res && res.data && +res.data.hash < 18) {
               this.list.push('算力异常')
             }
             console.log(this.list)

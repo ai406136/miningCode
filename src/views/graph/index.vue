@@ -66,7 +66,7 @@
         // 基于准备好的dom，初始化echarts实例
         this.getTempData({ id: this.$route.query.id }).then(res => {
           let data = {}
-          if (res.code === 200) {
+          if (res && res.code === 200) {
             data = res.data
           }
           let myChart = this.$echarts.init(document.getElementById('myChart'))
@@ -78,7 +78,7 @@
         })
         this.getDateTimeTempData({ id: this.$route.query.id }).then(res => {
           let data = {}
-          if (res.code === 200) {
+          if (res && res.code === 200) {
             data = res.data
           }
           let myChartTime1 = this.$echarts.init(document.getElementById('myChartTime1'))

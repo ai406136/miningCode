@@ -324,10 +324,30 @@
           }
           this.$http2(config).then(res => {
             console.log(res)
-            if (res.code === 200 || '200') {
-              this.imgSrc = res.data.img
-              localStorage.setItem('imgSrc', res.data.img)
+            if (res.code === 200 || res.code === '200') {
+              try {
+                this.imgSrc = res.data.img
+                localStorage.setItem('imgSrc', res.data.img)
+                this.$toast({
+                  message: '头像上传成功',
+                  position: 'center',
+                  duration: 5000
+                })
+              } catch (err) {
+                this.$toast({
+                  message: '保存错误',
+                  position: 'center',
+                  duration: 5000
+                })
+              }
             }
+          }).catch(err => {
+            this.$toast({
+              message: '保存错误',
+              position: 'center',
+              duration: 5000
+            })
+            console.log(err)
           })
         }
       }

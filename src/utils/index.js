@@ -103,7 +103,8 @@ export const hashrate = (data = {}) => {
   return option
 }
 
-export const hashrateTime = (data = {}) => {
+export const hashrateTime = (val = {}) => {
+  let data = val || {}
   let num = 0
   let nameArr = []
   let axisArr = []
@@ -187,7 +188,8 @@ export const hashrateTime = (data = {}) => {
   return option
 }
 
-export const CpuTemperatureTime = (data = {}) => {
+export const CpuTemperatureTime = (val = {}) => {
+  let data = val || {}
   let num = 0
   let nameArr = []
   let axisArr = []

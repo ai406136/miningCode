@@ -320,7 +320,7 @@
         if (this.remark === '') {
           this.$toast({
             message: '请输入备注',
-            position: 'top'
+            position: 'center'
           })
           return
         }
@@ -334,7 +334,7 @@
           if (code === 200) {
             this.$toast({
               message: '操作成功',
-              position: 'top'
+              position: 'center'
             })
           }
         })

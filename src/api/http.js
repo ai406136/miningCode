@@ -74,7 +74,7 @@ export const resResolve = response => {
 export const resReject = error => {
   Toast({
     message: '请求错误',
-    position: 'top'
+    position: 'center'
   })
   return Promise.reject(error)
 }
