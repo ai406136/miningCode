@@ -31,10 +31,10 @@
       <div class="graph-scroll_child">
         <h3 class="graph-header">本周GPU温度图</h3>
         <div id="myChart2"
-             :style="{width: '100%', height: '4rem'}"></div>
+             :style="{width: '100%', height: '4.5rem'}"></div>
         <h3 class="graph-header">当日GPU温度图</h3>
         <div id="myChartTime2"
-             :style="{width: '100%', height: '3rem'}">
+             :style="{width: '100%', height: '4.5rem'}">
         </div>
       </div>
     </Scroll>

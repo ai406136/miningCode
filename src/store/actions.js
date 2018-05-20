@@ -8,7 +8,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )
@@ -18,7 +18,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )
@@ -28,7 +28,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )
@@ -38,7 +38,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )
@@ -48,7 +48,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )
@@ -58,7 +58,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )
@@ -68,7 +68,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )
@@ -78,7 +78,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )
@@ -88,7 +88,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )
@@ -98,7 +98,7 @@ export default {
       () => {
         Toast({
           message: '请求错误',
-          position: 'top'
+          position: 'center'
         })
       }
     )

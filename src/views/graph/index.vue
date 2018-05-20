@@ -31,11 +31,11 @@
       <div class="graph-scroll_child">
         <h3 class="graph-header">本周算力统计图</h3>
         <div id="myChart"
-             :style="{width: '100%', height: '3rem'}">
+             :style="{width: '100%', height: '4.5rem'}">
         </div>
         <h3 class="graph-header">当日算力统计图</h3>
         <div id="myChartTime1"
-             :style="{width: '100%', height: '3rem'}">
+             :style="{width: '100%', height: '4.5rem'}">
         </div>
       </div>
     </Scroll>
@@ -79,7 +79,7 @@
         this.getDateTimeTempData({ id: this.$route.query.id }).then(res => {
           let data = {}
           if (res && res.code === 200) {
-            data = res.data
+            data = res.data || {}
           }
           let myChartTime1 = this.$echarts.init(document.getElementById('myChartTime1'))
           let optTime1 = hashrateTime(data)
