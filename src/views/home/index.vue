@@ -145,17 +145,17 @@
       <mt-swipe-item>
         <img @click='touchImg(1)'
              class="home-lun_img"
-             src="../../assets/img/longbo.jpg" />
+             src="../../assets/img/longbo.jpeg" />
       </mt-swipe-item>
       <mt-swipe-item>
         <img @click='touchImg(2)'
              class="home-lun_img"
-             src="../../assets/img/lunbo2.jpg" />
+             src="../../assets/img/lunbo2.jpeg" />
       </mt-swipe-item>
       <mt-swipe-item>
         <img @click='touchImg(3)'
              class="home-lun_img"
-             src="../../assets/img/kuan.png" />
+             src="../../assets/img/lunbo3.jpeg" />
       </mt-swipe-item>
     </mt-swipe>
     <div class="home-center">
@@ -192,7 +192,7 @@
                 <div class="li-left_bottom">
                   <span>gpu数{{item.gpus}}</span>
                   <span class="li-left_btn"
-                        @click="clickMining(item.id, index)">{{item.proxypool1}}</span>
+                        @click="clickMining(item.id, index)">{{item.proxypool22}}</span>
                   <!-- <span class="li-left_btn">{{item.proxypool1}}</span>  -->
                   <p>{{item.date}}</p>
                 </div>
@@ -341,8 +341,8 @@
             this.list = data.data.map(v => {
               v.date = getDate()
               this.dataKey.forEach(i => {
-                if (v.proxypool1 === i.name) {
-                  v.proxypool1 = i.key
+                if (v.proxypool1 === i.key) {
+                  v.proxypool22 = i.name
                 }
               })
               // for (let i in this.dataKey) {

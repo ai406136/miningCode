@@ -6,6 +6,8 @@
     "anomalyDetals": "消息列表",
     "mineDetails": "矿机详情",
     "setting": "我的设置",
-    "miningList": "矿机筛选"
+    "miningList": "矿机筛选",
+    "graph": "算力统计图",
+    "graph2": "GPU统计图"
   }
 }

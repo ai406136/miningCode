@@ -134,7 +134,7 @@
          @click="upData">
       <i class="iconfont icon-shuaxin"></i>
     </div>
-    <mt-search placeholder='请输入矿池地址、备注查询矿机'
+    <mt-search placeholder='请输入矿池名称、矿机地址查询矿机'
                cancel-text=""
                class="search"
                v-model="searchValue"

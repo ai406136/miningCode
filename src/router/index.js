@@ -29,7 +29,7 @@ export default new Router({
         { path: '/anomalyDetals', name: 'anomalyDetals', component: AnomalyDetals },
         { path: '/mineDetails', name: 'mineDetails', component: MineDetails },
         { path: '/graph', name: 'graph', component: Graph },
-        { path: '/graph2', name: 'graph', component: Graph2 },
+        { path: '/graph2', name: 'graph2', component: Graph2 },
         { path: '/setting', name: 'setting', component: Setting },
         { path: '/miningList', name: 'miningList', component: MiningList },
         { path: '/FindKey', name: 'FindKey', component: FindKey },

@@ -197,39 +197,32 @@
           class="account-sisint">
         <span>
           <i class="iconfont icon-shouji"></i>
-          <!-- <i class="iconfont icon-weibiaoti3"></i> -->
         </span>
-        <!-- <p class="account-p">{{iphone}}</p> -->
         <p class="account-p">{{iphone}}</p>
       </li>
       <router-link tag='li'
                    :to="{path: '/FindKey'}"
                    class="account-sisint account-sisint2">
         <span class="account-color">
-          <!-- <i class="iconfont icon-wodekuangji"></i> -->
           <i class="iconfont icon-icon56-copy"></i>
         </span>
-        <!-- <p class="account-p account-color">我的矿机</p> -->
-        <!-- <p class="account-p account-color">修改密码</p> -->
         <p class="account-p">
           修改密码
         </p>
       </router-link>
-      <!-- <router-link tag='li'
-                   :to="{path: '/setting'}"
-                   class="account-sisint account-sisint3">
+      <li class="account-sisint account-sisint3"
+          @click="fenx">
         <span class="account-color2">
-          <i class="iconfont icon-tuichu"></i>
-          <i class="iconfont icon-shezhi"></i>
+          <i class="iconfont icon-fenxiang"></i>
         </span>
-        <p class="account-p account-color2">退出登陆</p>
-      </router-link> -->
+        <p class="account-p account-color2">分享应用</p>
+      </li>
       <li class="account-sisint account-sisint3"
           @click="goBack">
         <span class="account-color2">
           <i class="iconfont icon-tuichu"></i>
         </span>
-        <p class="account-p account-color2">退出登陆</p>
+        <p class="account-p account-color2">退出登录</p>
       </li>
     </ul>
 
@@ -296,6 +289,9 @@
         } else {
           return false
         }
+      },
+      fenx () {
+
       },
       upImgFile (e) {
         if (e.target.files && e.target.files.length) {
