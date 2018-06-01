@@ -1,13 +1,26 @@
 <style lang='less' scoped>
   .home-lun {
-    height: 1.5rem;
+    height: 1.9rem;
   }
 
-  .home-lun_img {
+  .home-lun_img1 {
     width: 100%;
     height: 100%;
+    background: url("../../assets/img/longbo.jpeg") center no-repeat;
+    background-size: cover;
   }
-
+  .home-lun_img2 {
+    width: 100%;
+    height: 100%;
+    background: url("../../assets/img/lunbo2.jpeg") center no-repeat;
+    background-size: cover;
+  }
+  .home-lun_img3 {
+    width: 100%;
+    height: 100%;
+    background: url("../../assets/img/lunbo3.jpeg") center no-repeat;
+    background-size: cover;
+  }
   .home-statistics {
     height: 0.35rem;
     background-color: #efefef;
@@ -33,7 +46,7 @@
 
   .home-scroll {
     position: fixed;
-    top: 2.92rem;
+    top: 3.3rem;
     left: 0;
     right: 0;
     bottom: 0;
@@ -143,19 +156,22 @@
     <mt-swipe :auto="5500"
               class="home-lun">
       <mt-swipe-item>
-        <img @click='touchImg(1)'
+        <div class="home-lun_img1"></div>
+        <!-- <img @click='touchImg(1)'
              class="home-lun_img"
-             src="../../assets/img/longbo.jpeg" />
+             src="../../assets/img/longbo.jpeg" /> -->
       </mt-swipe-item>
       <mt-swipe-item>
-        <img @click='touchImg(2)'
+        <div class="home-lun_img2"></div>
+        <!-- <img @click='touchImg(2)'
              class="home-lun_img"
-             src="../../assets/img/lunbo2.jpeg" />
+             src="../../assets/img/lunbo2.jpeg" /> -->
       </mt-swipe-item>
       <mt-swipe-item>
-        <img @click='touchImg(3)'
+        <div class="home-lun_img3"></div>
+        <!-- <img @click='touchImg(3)'
              class="home-lun_img"
-             src="../../assets/img/lunbo3.jpeg" />
+             src="../../assets/img/lunbo3.jpeg" /> -->
       </mt-swipe-item>
     </mt-swipe>
     <div class="home-center">

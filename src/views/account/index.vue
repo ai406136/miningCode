@@ -68,29 +68,33 @@
   }
 
   .account-img {
-    width: 0.8rem;
-    height: 0.8rem;
-    border-radius: 50%;
-    overflow: hidden;
     margin: 0 auto;
+    text-align: center;
     margin-bottom: 10px;
     position: absolute;
-    top: 0.8rem;
+    top: 0.73rem;
     left: 0;
     right: 0;
-    bottom: 0;
-    margin: 0 auto;
     img {
-      width: 100%;
-      height: 100%;
+      width: 0.8rem;
+      height: 0.8rem;
+      overflow: hidden;
+      border-radius: 50%;
+      margin: 0 auto;
     }
   }
-
+  .account-user_iphone {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 0.08rem;
+    color: #fff;
+    font-size: 0.18rem;
+  }
   .account-center {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 1.3rem;
+    height: 1.1rem;
     background-color: #fff;
     margin-bottom: 0.05rem;
   }
@@ -121,7 +125,7 @@
   }
 
   .account-sisint {
-    padding: 0.13rem 0.3rem;
+    padding: 0.1rem 0.3rem;
     display: flex;
     align-items: center;
     background-color: #fff;
@@ -177,7 +181,10 @@
       <img v-else
            :src="'http://120.78.164.148/Public/Upload/' + imgSrc"
            alt="" />
+
+      <div class="account-user_iphone">{{iphone}}</div>
     </div>
+
     <div class="account-center">
       <ul class="account-center_ul">
         <li>
@@ -192,18 +199,10 @@
     </div>
     <ul @touchstart="touchDom($event, 'add')"
         @touchend="touchDom($event, 'rem')">
-      <li tag='li'
-          :to="{path: '/anomaly'}"
-          class="account-sisint">
-        <span>
-          <i class="iconfont icon-shouji"></i>
-        </span>
-        <p class="account-p">{{iphone}}</p>
-      </li>
       <router-link tag='li'
                    :to="{path: '/FindKey'}"
                    class="account-sisint account-sisint2">
-        <span class="account-color">
+        <span class="account-color2">
           <i class="iconfont icon-icon56-copy"></i>
         </span>
         <p class="account-p">
@@ -211,12 +210,22 @@
         </p>
       </router-link>
       <li class="account-sisint account-sisint3"
-          @click="fenx">
+          @click="fenx"
+          id="fenx">
         <span class="account-color2">
           <i class="iconfont icon-fenxiang"></i>
         </span>
         <p class="account-p account-color2">分享应用</p>
       </li>
+      <router-link tag="li"
+                   :to="{path: '/aboutUser'}"
+                   class="account-sisint account-sisint3"
+                   @click="aboutUs">
+        <span class="account-color2">
+          <i class="iconfont icon-about"></i>
+        </span>
+        <p class="account-p account-color2">关于我们</p>
+      </router-link>
       <li class="account-sisint account-sisint3"
           @click="goBack">
         <span class="account-color2">
@@ -271,6 +280,13 @@
       this.imgSrc = localStorage.getItem('imgSrc')
     },
     methods: {
+      fenx () {
+        console.log(this.$apiss)
+        console.log(window.api)
+      },
+      aboutUs () {
+        // 关于我们
+      },
       touchDom (dom, name) {
         touchDoms(dom, name)
       },
@@ -289,9 +305,6 @@
         } else {
           return false
         }
-      },
-      fenx () {
-
       },
       upImgFile (e) {
         if (e.target.files && e.target.files.length) {

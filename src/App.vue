@@ -23,7 +23,7 @@
   }
 </script>
 <style lang='less'>
-  @import "http://at.alicdn.com/t/font_534889_79u7azbqcxdh1tt9.css";
+  @import "http://at.alicdn.com/t/font_534889_wbbaah2ggyx5stt9.css";
   #app {
     width: 100%;
     height: 100%;
