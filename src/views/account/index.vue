@@ -83,6 +83,15 @@
       margin: 0 auto;
     }
   }
+  .account-user_imgs {
+    width: 0.8rem;
+    height: 0.8rem;
+    background: url("../../assets/img/toxian.jpeg") center no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
   .account-user_iphone {
     width: 100%;
     overflow: hidden;
@@ -175,12 +184,12 @@
     <div class="account-top">
     </div>
     <div class="account-img">
-      <img src="../../assets/img/toxian.jpeg"
+      <!-- <img src="../../assets/img/toxian.jpeg"
            v-if="!imgSrc" />
       <img v-else
            :src="'http://120.78.164.148/Public/Upload/' + imgSrc"
-           alt="" />
-
+           alt="" /> -->
+      <div class="account-user_imgs"></div>
       <div class="account-user_iphone">{{iphone}}</div>
     </div>
 
