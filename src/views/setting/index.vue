@@ -49,7 +49,7 @@
          @click="upImg">
       <span>头像</span>
       <div class="setting-img">
-        <img src="../../assets/img/toxian.jpg"
+        <img src="../../assets/img/toxian.jpeg"
              v-if="!imgSrc" />
         <img :src="'http://120.78.164.148/Public/Upload/' + imgSrc"
              v-else />
@@ -96,7 +96,7 @@
         sheetVisible: false,
         sheetVisible2: false,
         imgSrc: '',
-        def: '../../assets/img/toxian.jpg',
+        def: '../../assets/img/toxian.jpeg',
         actions: [{
           name: '确定',
           method () {

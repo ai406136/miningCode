@@ -174,9 +174,8 @@
   <div class="account">
     <div class="account-top">
     </div>
-    <div class="account-img"
-         @click="upImg">
-      <img src="../../assets/img/toxian.jpg"
+    <div class="account-img">
+      <img src="../../assets/img/toxian.jpeg"
            v-if="!imgSrc" />
       <img v-else
            :src="'http://120.78.164.148/Public/Upload/' + imgSrc"
@@ -261,7 +260,7 @@
         sheetVisible: false,
         sheetVisible2: false,
         // imgSrc: '',
-        def: '../../assets/img/toxian.jpg',
+        def: '../../assets/img/toxian.jpeg',
         actions: [{
           name: '确定',
           method () {
